@@ -1,0 +1,82 @@
+<meta charset = "UTF-8">
+
+<script>
+
+alert("Olá, caro jogador. Na UniGames você nunca sairá perdendo. Boa sorte !!! " + " Você terá que digitar 6 números, de cada vez, entre 1 e 60"); 
+
+var numero;
+var aposta = [];
+
+for (var i = 1; i <= 6; i++) {
+    do {
+        numero = parseInt(prompt("Digite a sua " + i + "ª aposta"));
+        if (numero < 1 || numero > 60 || aposta.includes(numero) || isNaN(numero)) {
+            alert("Número fora de intervalo ou já escolhido. Digite um número diferente.");
+        }
+    } while (numero < 1 || numero > 60 || aposta.includes(numero));
+
+    aposta.push(numero);
+}
+
+aposta.sort(function(a, b) {
+  return a - b;
+});
+
+
+var sorteio = [];
+var s1, s2, s3, s4, s5, s6;
+
+do { 
+s1 = Math.floor((Math.random() * 60) + 1); 
+} while (sorteio.includes(s1));
+sorteio.push(s1);
+
+do {
+ s2 = Math.floor((Math.random() * 60) + 1); 
+ } while (sorteio.includes(s2));
+sorteio.push(s2);
+
+do {
+ s3 = Math.floor((Math.random() * 60) + 1); 
+ } while (sorteio.includes(s3));
+sorteio.push(s3);
+
+do {
+ s4 = Math.floor((Math.random() * 60) + 1); 
+ } while (sorteio.includes(s4));
+sorteio.push(s4);
+
+do {
+ s5 = Math.floor((Math.random() * 60) + 1); 
+ } while (sorteio.includes(s5));
+sorteio.push(s5);
+
+do {
+ s6 = Math.floor((Math.random() * 60) + 1);
+ } while (sorteio.includes(s6));
+sorteio.push(s6);
+
+
+sorteio.sort(function(a, b) {
+  return a - b;
+});
+
+var acertos = 0;
+for (var i = 0; i < aposta.length; i++) {
+    if (sorteio.includes(aposta[i])) {
+        acertos++;
+		}
+		}
+
+  
+if(acertos >= 0 && acertos <= 3){
+alert("QUE PENA ;/ NÃO FOI DESSA VEZ " + " Sua aposta : " + aposta + " Os números do sorteio foram : " + sorteio + " Você acertou : " + acertos + " Não fique assim. Aperte em '0K' e veja o que você ganhou");
+alert("VOCÊ GANHOU 10% DE DESCONTO NA SUA PRÓXIMA APOSTA");
+}else if(acertos == 4){
+alert("DEU QUADRA" + " Sua aposta : " + aposta + " Os números do sorteio foram : " + sorteio + " Você acertou : " + acertos + " Vá a uma lotérica mais próxima e retire seu prêmio");
+}else if(acertos == 5){
+alert("DEU QUINA" + " Sua aposta : " + aposta + " Os números do sorteio foram : " + sorteio + " Você acertou : " + acertos + " Vá a uma lotérica mais próxima e retire seu prêmio");
+}else if(acertos == 6){
+alert("DEU SENA" + " Sua aposta : " + aposta + " Os números do sorteio foram : " + sorteio + " Você acertou : " + acertos + " Vá a uma lotérica mais próxima e retire seu prêmio");
+}
+</script>
